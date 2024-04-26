@@ -9,21 +9,22 @@ function showMovieList(val) {
         }
     };
 
-    fetch('https://api.themoviedb.org/3/search/movie?val&include_adult=false&language=en-US&page=1', options)
+    fetch(`https://api.themoviedb.org/3/search/movie?query=${val}&include_adult=false&language=en-US&page=1`, options)
         .then(response => response.json())
         .then(response => {
             console.log(response);
             response["results"];
-            const movieContainer = document.querySelector('#moviecontainer');
-            movieContainer.innerHTML = '';
+            const movieCard = document.querySelector('.movie-card');
+            movieCard.innerHTML = '';
 
             for (let i = 0; i < response["results"].length; i++) {
-                let image = response["results"][i]["poster_path"];
+                const image = response["results"][i]["poster_path"];
 
-                let newImg = document.createElement("img");
-                newImg.setAttribute("src", `https://image.tmdb.org/t/p/w400${image}`);
-                newImg.classList.add("posterImg")
-                movieContainer.appendChild(newImg);
+                const moviePoster = document.createElement("img");
+                moviePoster.setAttribute("src", `https://image.tmdb.org/t/p/w400${image}`);
+                moviePoster.classList.add("movie-poster");
+
+                movieCard.appendChild(moviePoster);
             }
         })
         .catch(err => console.error(err));

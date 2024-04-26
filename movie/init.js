@@ -11,19 +11,14 @@ fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', opti
     .then(response => {
         console.log(response)
         for (let i = 0; i < response["results"].length; i++) {
-            let image = response["results"][i]["poster_path"];
+            const image = response["results"][i]["poster_path"];
 
-            const moviecontainer = document.querySelector('#moviecontainer');
+            const movieCard = document.querySelector('.movie-card');
 
-            let newImg = document.createElement("img");
-            newImg.setAttribute("src", `https://image.tmdb.org/t/p/w400${image}`);
-            newImg.classList.add("posterImg")
-            moviecontainer.appendChild(newImg);
+            const moviePoster = document.createElement("img");
+            moviePoster.setAttribute("src", `https://image.tmdb.org/t/p/w400${image}`);
+            moviePoster.classList.add("movie-poster");
+            movieCard.appendChild(moviePoster);
         }
     })
     .catch(err => console.error(err));
-
-document.querySelector("#logo").addEventListener("click",function() {
-    alert("Welcome my page");
-    location.reload(true);
-})
