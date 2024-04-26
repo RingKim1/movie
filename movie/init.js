@@ -9,10 +9,12 @@ const options = {
 fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
     .then(response => response.json())
     .then(response => {
-        console.log(response)
-        for (let i = 0; i < response["results"].length; i++) {
-            const image = response["results"][i]["poster_path"];
+      console.log(response);
+      const movieData = response["results"];
 
+        for (let i = 0; i < movieData.length; i++) {
+            const image = movieData[i]["poster_path"];
+            
             const movieCard = document.querySelector('.movie-card');
 
             const moviePoster = document.createElement("img");

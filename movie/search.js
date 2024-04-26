@@ -13,15 +13,16 @@ function showMovieList(val) {
         .then(response => response.json())
         .then(response => {
             console.log(response);
-            response["results"];
+            const movieData = response["results"];
+            
             const movieCard = document.querySelector('.movie-card');
             movieCard.innerHTML = '';
 
-            for (let i = 0; i < response["results"].length; i++) {
-                const image = response["results"][i]["poster_path"];
+            for (let i = 0; i < movieData.length; i++) {
+                const img = movieData[i]["poster_path"];
 
                 const moviePoster = document.createElement("img");
-                moviePoster.setAttribute("src", `https://image.tmdb.org/t/p/w400${image}`);
+                moviePoster.setAttribute("src", `https://image.tmdb.org/t/p/w400${img}`);
                 moviePoster.classList.add("movie-poster");
 
                 movieCard.appendChild(moviePoster);
