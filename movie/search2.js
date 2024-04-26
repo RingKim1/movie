@@ -14,18 +14,20 @@ function showMovieList(val) {
         .then(response => {
             console.log(response);
             const movieData = response["results"];
-            
+
+            const moviesContainer = document.querySelector('.movie-container');
             const movieCard = document.querySelector('.movie-card');
+
             movieCard.innerHTML = '';
 
             for (let i = 0; i < movieData.length; i++) {
                 const img = movieData[i]["poster_path"];
-                const title1 = movieData[i]["title"];
+                const title = movieData[i]["original_title"];
                 const overview = movieData[i]["overview"];
                 const voteAverage = movieData[i]["vote_average"];
 
                 let moviePoster = document.createElement("img");
-                moviePoster.setAttribute("src", `https://image.tmdb.org/t/p/w500${img}`);
+                moviePoster.setAttribute("src", `https://image.tmdb.org/t/p/w400${img}`);
                 moviePoster.classList.add("movie-poster")
 
                 const movieInfo = document.createElement('div');
@@ -33,7 +35,7 @@ function showMovieList(val) {
 
                 const movieTitle = document.createElement('h3');
                 movieTitle.classList.add('movie-title');
-                movieTitle.textContent = title1;
+                movieTitle.textContent = title;
 
                 const movieOverview = document.createElement('p');
                 movieOverview.classList.add('movie-overview');
@@ -51,7 +53,6 @@ function showMovieList(val) {
                 movieCard.appendChild(movieInfo);
               
                 moviesContainer.appendChild(movieCard);
-
             }
         })
         .catch(err => console.error(err));

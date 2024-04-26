@@ -14,8 +14,10 @@ function showMovieList(val) {
         .then(response => {
             console.log(response);
             const movieData = response["results"];
-            
+
+            const moviesContainer = document.querySelector('.movie-container');
             const movieCard = document.querySelector('.movie-card');
+
             movieCard.innerHTML = '';
 
             for (let i = 0; i < movieData.length; i++) {
