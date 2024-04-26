@@ -11,23 +11,26 @@ function showMovieList(val) {
 
     fetch(`https://api.themoviedb.org/3/search/movie?query=${val}&include_adult=false&language=en-US&page=1`, options)
         .then(response => response.json())
-        .then(response => {
+        .then(response => { 
             console.log(response);
             const movieData = response["results"];
 
-            const moviesContainer = document.querySelector('.movie-container');
+            const moviesContainer = document.querySelector('#movie-container');
             const movieCard = document.querySelector('.movie-card');
-
-            movieCard.innerHTML = '';
+            
+            moviesContainer.innerHTML = '';
 
             for (let i = 0; i < movieData.length; i++) {
                 const img = movieData[i]["poster_path"];
                 const title = movieData[i]["original_title"];
                 const overview = movieData[i]["overview"];
                 const voteAverage = movieData[i]["vote_average"];
+                const id = movieData[i]["id"];
+
 
                 let moviePoster = document.createElement("img");
                 moviePoster.setAttribute("src", `https://image.tmdb.org/t/p/w400${img}`);
+                moviePoster.setAttribute("data-movie-id", `${id}`);
                 moviePoster.classList.add("movie-poster")
 
                 const movieInfo = document.createElement('div');
@@ -43,7 +46,10 @@ function showMovieList(val) {
 
                 const movieRating = document.createElement('p');
                 movieRating.classList.add('movie-rating');
-                movieRating.textContent = `Rating: ${voteAverage}`;
+                movieRating.textContent = `평점: ${voteAverage}`;
+
+                const movieCard = document.createElement('div');
+                movieCard.classList.add('.movie-card');
 
                 movieInfo.appendChild(movieTitle);
                 movieInfo.appendChild(movieOverview);
@@ -51,9 +57,10 @@ function showMovieList(val) {
               
                 movieCard.appendChild(moviePoster);
                 movieCard.appendChild(movieInfo);
-              
+
                 moviesContainer.appendChild(movieCard);
             }
+
         })
         .catch(err => console.error(err));
 }

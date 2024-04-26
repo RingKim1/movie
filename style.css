@@ -78,95 +78,82 @@ section>h2 {
     margin-bottom: 80px;
 }
 
-section>.movie-card {
-
+#movie-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-
     flex-wrap: wrap;
-    overflow-x: auto;
-
-    margin: 10px;
-
+    justify-content: space-between;
 }
 
 .movie-card {
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-
-    flex-wrap: wrap;
-    overflow-x: auto;
-
-    margin: 10px;
-
+    margin-bottom: 40px;
     position: relative;
     overflow: hidden;
+
+    display: flex;
 }
 
 .movie-poster {
+
     margin: 10px;
     border-radius: 5px;
     transition: opacity 0.3s ease;
+
+    z-index: 2;
 }
 
+/* 호버링시 card나 poster 이미지에 딱 맞게끔? 구현 필요 */
 .movie-info {
-    width: 400px;
-    height: 100%;
-
     position: absolute;
-    /* 영화 정보를 이미지 위에 겹쳐 표시하기 위해 절대 위치 지정 */
-    top: 50%;
-    /* 부모 요소의 세로 중앙 정렬을 위해 top 50% */
-    left: 50%;
-    /* 부모 요소의 가로 중앙 정렬을 위해 left 50% */
-    transform: translate(-50%, -50%);
-    /* 중앙 정렬을 위한 변형 */
-    padding: 20px;
+    transform: translate(0, -100%);
 
-    background-color: rgba(0, 0, 0, 0.7);
+    width: 420px;
+    height: 620px;
+    padding: 20px;
+    margin: 10px;
+
+    background-color: rgba(0, 0, 0, 0.9);
     color: whitesmoke;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     opacity: 0;
     transition: opacity 0.3s ease;
 
-    text-align: center;
-    justify-content: center;
+    z-index: 1;
 }
 
 .movie-info>.movie-title,
 .movie-overview,
 .movie-rating {
-    height: 30%;
     padding: 20px;
     margin: 5px;
 }
 
-.movie-info>.movie-title {
+.movie-title {
     font-size: 40px;
     color: rgb(35, 88, 168);
+    margin-bottom: 20px;
 }
 
-.movie-info>.movie-overview {
+.movie-overview {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.movie-rating {
     font-size: 24px;
 }
 
-.movie-info>.movie-rating {
-    font-size: 24px;
-}
-
-
-
-.movie-card:hover .movie-poster {
-    opacity: 0.5;
-}
-
-.movie-card:hover .movie-info {
+.movie-card,:hover > .movie-poster {
+    opacity: 0.9;
+  }
+  
+  .movie-card,:hover > .movie-info {
     opacity: 1;
-}
+  }
 
 /* footer */
 footer {
@@ -181,7 +168,7 @@ footer {
 
 }
 
-footer > img {
+footer>img {
     margin-right: 10px;
     width: 1em;
     height: 1em;
