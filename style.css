@@ -8,15 +8,30 @@ header {
     justify-content: space-between;
     align-items: center;
     
-    margin: 50px 0px;
+    margin: 50px 100px;
     border: solid 1px blue;
+}
+
+header > div, css {
+    display: flex;
+    flex-flow: row nowrap;
+    
+    justify-content: center;
+    align-items: center;
+
+    margin: 30px;
+}
+
+#logo {
+    width: 4em;
+    height: 4em;
+    margin: 20px;
 }
 
 h1 {
     font-size: 5em;
     font-weight: 600;
     color: rgb(35, 88, 168);
-    margin: 1em;
 }
 
 #searchcontainer {
@@ -24,10 +39,13 @@ h1 {
     
     width: 20%;
     height: 70%;
+
     display: flex;
-    flex-direction: row;
+    flex-flow: row nowrap;
+
     justify-content: center;
     align-items: center;
+
 
 }
 
@@ -35,26 +53,33 @@ h1 {
     
     width: 4em;
     width: 4em;
-    margin: 1em 0;
     background-color: transparent;
-    border: solid 1px whitesmoke;
 
 }
-#searchcontainer > .form-floating{
-
+#searchcontainer > #search_input {
     width: 100%;
+    height: 60px;
+
     background-color: transparent;
-    border: solid 1px whitesmoke;
+    border: solid 1px gray;
+    border-radius: 5px;
+    padding: 10px;
+
+    color: whitesmoke;
 }
 /* section */
 section {
     border: solid 1px blue;
 
     color: whitesmoke;
-
-    width: 100vw;
     
-    margin: 10px;
+    margin: 100px;
+    overflow: hidden;
+}
+
+section > h2 {
+    font-size: 3em;
+    margin-bottom: 80px;
 }
 section > #moviecontainer {
 
@@ -71,10 +96,13 @@ section > #moviecontainer {
 
 }
 
-section > #moviecontainer > .img-thumbnail{
-    width: 200px;
-    height: 200px;
+.posterImg {
+    width: 270px;
+    height: 480px;
     object-fit: cover;
+
+    margin: 10px;
+    border-radius: 20px;
 }
 
 /* footer */

@@ -15,14 +15,19 @@ fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', opti
 
             const moviecontainer = document.querySelector('#moviecontainer');
             
-            let img = document.createElement("img");
-            img.setAttribute("src", `https://image.tmdb.org/t/p/w500${image}`);
-            moviecontainer.appendChild(img);
+            let newImg = document.createElement("img");
+            newImg.setAttribute("src", `https://image.tmdb.org/t/p/w500${image}`);
+            newImg.classList.add("posterImg")
+            moviecontainer.appendChild(newImg);
         }
-
     })
-
     .catch(err => console.error(err));
 
+    document.querySelector("#logo").addEventListener("click",function() {
+        alert("Welcome my page");
+    })
 
-
+    document.querySelector("#search_input").addEventListener("keydown",function() {
+        console.log("입력 중");
+        alert("입력 중");
+    })
