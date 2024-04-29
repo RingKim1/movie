@@ -18,9 +18,7 @@ function showMovieList(val) {
             const moviesContainer = document.querySelector('#movie-container');
             const movieCard = document.querySelector('.movie-card');
 
-            if(movieData >= 0) {
-                alert(`"${val}" 검색 결과가 없습니다.`)
-            } else {
+            if(movieData.length > 0) {
             moviesContainer.innerHTML = '';
 
             for (let i = 0; i < movieData.length; i++) {
@@ -71,7 +69,9 @@ function showMovieList(val) {
                     console.log(movieCard);
                 })
 
-            }}
+            }} else {
+                alert(`"${val}" 검색 결과가 없습니다.`)
+            }
 
         })
         .catch(err => console.error(err));
