@@ -1,4 +1,4 @@
-// 검색 시 영화를 보여주는 핸들러
+// 검색 시 영화 이미지, 정보를 보여주는 핸들러
 function showMovieList(val) {
 
     const options = {
@@ -15,20 +15,61 @@ function showMovieList(val) {
             console.log(response);
             const movieData = response["results"];
 
-            const moviesContainer = document.querySelector('.movie-container');
+            const moviesContainer = document.querySelector('#movie-container');
             const movieCard = document.querySelector('.movie-card');
 
-            movieCard.innerHTML = '';
+            moviesContainer.innerHTML = '';
 
             for (let i = 0; i < movieData.length; i++) {
                 const img = movieData[i]["poster_path"];
+                const title = movieData[i]["original_title"];
+                const overview = movieData[i]["overview"];
+                const voteAverage = movieData[i]["vote_average"];
+                const id = movieData[i]["id"];
 
-                const moviePoster = document.createElement("img");
+
+                let moviePoster = document.createElement("img");
                 moviePoster.setAttribute("src", `https://image.tmdb.org/t/p/w400${img}`);
-                moviePoster.classList.add("movie-poster");
+                moviePoster.classList.add("movie-poster")
+
+                const movieInfo = document.createElement('div');
+                movieInfo.classList.add('movie-info');
+
+                const movieTitle = document.createElement('h3');
+                movieTitle.classList.add('movie-title');
+                movieTitle.textContent = title;
+
+                const movieOverview = document.createElement('p');
+                movieOverview.classList.add('movie-overview');
+                movieOverview.textContent = overview;
+
+                const movieRating = document.createElement('p');
+                movieRating.classList.add('movie-rating');
+                movieRating.textContent = `평점: ${voteAverage}`;
+
+                const movieCard = document.createElement('div');
+                movieCard.setAttribute("data-movie-id", `${id}`);
+                movieCard.classList.add('.movie-card');
+
+                movieInfo.appendChild(movieTitle);
+                movieInfo.appendChild(movieOverview);
+                movieInfo.appendChild(movieRating);
 
                 movieCard.appendChild(moviePoster);
+                movieCard.appendChild(movieInfo);
+
+                moviesContainer.appendChild(movieCard);
+
+                // 클릭 이벤트
+                movieCard.addEventListener("click", function () {
+                    // const ID = movieCard.getAttribute("data-movie-id");
+                    const ID = movieCard.dataset["movieId"]
+                    alert(`movie ID : ${ID}`)
+                    console.log(movieCard);
+                })
+
             }
+
         })
         .catch(err => console.error(err));
 }
@@ -39,10 +80,8 @@ searchInput.addEventListener("keypress", function (e) {
     if (e.key === 'Enter') {
         e.preventDefault()
 
-
         const val = searchInput.value;
         console.log(`"${val}" 검색`);
         showMovieList(val)
-
     }
 })
