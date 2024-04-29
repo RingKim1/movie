@@ -71,7 +71,6 @@ searchInput.addEventListener("keypress", function (e) {
     if (e.key === 'Enter') {
         e.preventDefault()
 
-
         const val = searchInput.value;
         console.log(`"${val}" 검색`);
         showMovieList(val)

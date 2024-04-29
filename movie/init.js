@@ -1,3 +1,5 @@
+// 웹 사이트 초기 설정(탑 영화)
+
 const options = {
     method: 'GET',
     headers: {
