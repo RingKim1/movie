@@ -16,12 +16,12 @@ fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', opti
 
     const moviesContainer = document.querySelector('#movie-container');
 
-    for (let i = 0; i < movieData.length; i++) {
-      const img = movieData[i]["poster_path"];
-      const title = movieData[i]["original_title"];
-      const overview = movieData[i]["overview"];
-      const voteAverage = movieData[i]["vote_average"];
-      const id = movieData[i]["id"];
+    movieData.forEach(element => {
+      const img = element["poster_path"];
+      const title = element["original_title"];
+      const overview = element["overview"];
+      const voteAverage = element["vote_average"];
+      const id = element["id"];
 
 
       let moviePoster = document.createElement("img");
@@ -62,7 +62,8 @@ fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', opti
         const ID = movieCard.dataset["movieId"]
         alert(`movie ID : ${ID}`)
         console.log(movieCard);
-      })
-    }
-  })
+      });
+    })
+  }
+  )
   .catch(err => console.error(err));

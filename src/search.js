@@ -18,58 +18,58 @@ function showMovieList(val) {
             const moviesContainer = document.querySelector('#movie-container');
             const movieCard = document.querySelector('.movie-card');
 
-            if(movieData.length > 0) {
-            moviesContainer.innerHTML = '';
+            if (movieData.length > 0) {
+                moviesContainer.innerHTML = '';
 
-            for (let i = 0; i < movieData.length; i++) {
-                const img = movieData[i]["poster_path"];
-                const title = movieData[i]["original_title"];
-                const overview = movieData[i]["overview"];
-                const voteAverage = movieData[i]["vote_average"];
-                const id = movieData[i]["id"];
+                movieData.forEach(element => {
+                    const img = element["poster_path"];
+                    const title = element["original_title"];
+                    const overview = element["overview"];
+                    const voteAverage = element["vote_average"];
+                    const id = element["id"];
 
 
-                let moviePoster = document.createElement("img");
-                moviePoster.setAttribute("src", `https://image.tmdb.org/t/p/w400${img}`);
-                moviePoster.classList.add("movie-poster")
+                    let moviePoster = document.createElement("img");
+                    moviePoster.setAttribute("src", `https://image.tmdb.org/t/p/w400${img}`);
+                    moviePoster.classList.add("movie-poster")
 
-                const movieInfo = document.createElement('div');
-                movieInfo.classList.add('movie-info');
+                    const movieInfo = document.createElement('div');
+                    movieInfo.classList.add('movie-info');
 
-                const movieTitle = document.createElement('h3');
-                movieTitle.classList.add('movie-title');
-                movieTitle.textContent = title;
+                    const movieTitle = document.createElement('h3');
+                    movieTitle.classList.add('movie-title');
+                    movieTitle.textContent = title;
 
-                const movieOverview = document.createElement('p');
-                movieOverview.classList.add('movie-overview');
-                movieOverview.textContent = overview;
+                    const movieOverview = document.createElement('p');
+                    movieOverview.classList.add('movie-overview');
+                    movieOverview.textContent = overview;
 
-                const movieRating = document.createElement('p');
-                movieRating.classList.add('movie-rating');
-                movieRating.textContent = `평점: ${voteAverage}`;
+                    const movieRating = document.createElement('p');
+                    movieRating.classList.add('movie-rating');
+                    movieRating.textContent = `평점: ${voteAverage}`;
 
-                const movieCard = document.createElement('div');
-                movieCard.setAttribute("data-movie-id", `${id}`);
-                movieCard.classList.add('.movie-card');
+                    const movieCard = document.createElement('div');
+                    movieCard.setAttribute("data-movie-id", `${id}`);
+                    movieCard.classList.add('.movie-card');
 
-                movieInfo.appendChild(movieTitle);
-                movieInfo.appendChild(movieOverview);
-                movieInfo.appendChild(movieRating);
+                    movieInfo.appendChild(movieTitle);
+                    movieInfo.appendChild(movieOverview);
+                    movieInfo.appendChild(movieRating);
 
-                movieCard.appendChild(moviePoster);
-                movieCard.appendChild(movieInfo);
+                    movieCard.appendChild(moviePoster);
+                    movieCard.appendChild(movieInfo);
 
-                moviesContainer.appendChild(movieCard);
+                    moviesContainer.appendChild(movieCard);
 
-                // 클릭 이벤트
-                movieCard.addEventListener("click", function () {
-                    // const ID = movieCard.getAttribute("data-movie-id");
-                    const ID = movieCard.dataset["movieId"]
-                    alert(`movie ID : ${ID}`)
-                    console.log(movieCard);
+                    // 클릭 이벤트
+                    movieCard.addEventListener("click", function () {
+                        // const ID = movieCard.getAttribute("data-movie-id");
+                        const ID = movieCard.dataset["movieId"]
+                        alert(`movie ID : ${ID}`)
+                        console.log(movieCard);
+                    });
                 })
-
-            }} else {
+            } else {
                 alert(`"${val}" 검색 결과가 없습니다.`)
             }
 
