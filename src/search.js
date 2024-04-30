@@ -78,13 +78,12 @@ function showMovieList(val) {
 }
 
 // 검색 이벤트
-const searchInput = document.querySelector("#search");
-searchInput.addEventListener("keypress", function (e) {
-    if (e.key === 'Enter') {
-        e.preventDefault()
+const searchInput = document.querySelector("#search-form");
+const search = document.querySelector("#search")
 
-        const val = searchInput.value;
-        console.log(`"${val}" 검색`);
-        showMovieList(val)
-    }
+searchInput.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const val = search.value;
+    console.log(`"${val}" 검색`);
+    showMovieList(val);
 })
