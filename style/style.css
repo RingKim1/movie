@@ -75,10 +75,11 @@ section {
 
 section>h2 {
     font-size: 3em;
+    margin-top: 100px;
     margin-bottom: 80px;
 }
 
-#movie-container {
+#movie-container, #recommend {
     display: flex;
     flex-wrap: wrap;
     justify-content:space-around;
@@ -159,6 +160,9 @@ section>h2 {
     opacity: 1;
     cursor: pointer;
   }
+
+/* recommend */
+
 
 /* footer */
 footer {
