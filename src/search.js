@@ -1,13 +1,16 @@
 // 검색 시 영화 이미지, 정보를 보여주는 핸들러
+import { Token } from "./config";
+
+
 function showMovieList(val) {
 
     const options = {
         method: 'GET',
         headers: {
-            accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYmU5YjdlMjE5NDNlZWNiZjEyMzJiMDRhYTVlYzI1OSIsInN1YiI6IjY2MjhkOTc3OTFmMGVhMDE3ZTAxMDU2NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Kocb84g6nnDUdrQpEt7sq5BdKfrIqhJDiHucIzViMb0'
+          accept: 'application/json',
+          Authorization: `Bearer ${Token}`
         }
-    };
+      };
 
     fetch(`https://api.themoviedb.org/3/search/movie?query=${val}&include_adult=false&language=en-US&page=1`, options)
         .then(response => response.json())
@@ -75,7 +78,7 @@ function showMovieList(val) {
                             method: 'GET',
                             headers: {
                                 accept: 'application/json',
-                                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYmU5YjdlMjE5NDNlZWNiZjEyMzJiMDRhYTVlYzI1OSIsInN1YiI6IjY2MjhkOTc3OTFmMGVhMDE3ZTAxMDU2NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Kocb84g6nnDUdrQpEt7sq5BdKfrIqhJDiHucIzViMb0'
+                                Authorization: `Bearer ${Token}`
                             }
                         };
 
