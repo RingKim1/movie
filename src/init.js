@@ -1,5 +1,5 @@
 // 웹 사이트 초기 설정(탑 영화)
-import { Token } from "./config";
+import { Token } from "../src/config.js";
 
 const options = {
   method: 'GET',

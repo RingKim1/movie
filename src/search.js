@@ -1,5 +1,5 @@
 // 검색 시 영화 이미지, 정보를 보여주는 핸들러
-import { Token } from "./config";
+import { Token } from "../src/config.js";
 
 
 function showMovieList(val) {
